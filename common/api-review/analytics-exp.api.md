@@ -6,7 +6,7 @@
 
 import { FirebaseApp } from '@firebase/app-exp';
 
-// @public (undocumented)
+// @public
 export interface Analytics {
     app: FirebaseApp;
 }
@@ -14,6 +14,12 @@ export interface Analytics {
 // @public
 export interface AnalyticsCallOptions {
     global: boolean;
+}
+
+// @public
+export interface AnalyticsOptions {
+    // (undocumented)
+    config: GtagConfigParams | EventParams;
 }
 
 // @public
@@ -45,6 +51,8 @@ export type EventNameString = 'add_payment_info' | 'add_shipping_info' | 'add_to
 
 // @public
 export interface EventParams {
+    // (undocumented)
+    [key: string]: unknown;
     // (undocumented)
     affiliation?: string;
     // (undocumented)
@@ -109,6 +117,45 @@ export interface EventParams {
 
 // @public
 export function getAnalytics(app: FirebaseApp): Analytics;
+
+// @public
+export interface GtagConfigParams {
+    // (undocumented)
+    'allow_google_signals?': boolean;
+    // (undocumented)
+    [key: string]: unknown;
+    // (undocumented)
+    'allow_ad_personalization_signals'?: boolean;
+    // (undocumented)
+    'anonymize_ip'?: boolean;
+    // (undocumented)
+    'cookie_domain'?: string;
+    // (undocumented)
+    'cookie_expires'?: number;
+    // (undocumented)
+    'cookie_flags'?: string;
+    // (undocumented)
+    'cookie_prefix'?: string;
+    // (undocumented)
+    'cookie_update'?: boolean;
+    // (undocumented)
+    'custom_map'?: {
+        [key: string]: unknown;
+    };
+    // (undocumented)
+    'link_attribution'?: boolean;
+    // (undocumented)
+    'page_location'?: string;
+    // (undocumented)
+    'page_path'?: string;
+    // (undocumented)
+    'page_title'?: string;
+    // (undocumented)
+    'send_page_view'?: boolean;
+}
+
+// @public
+export function initializeAnalytics(app: FirebaseApp, options?: AnalyticsOptions): Analytics;
 
 // @public
 export function isSupported(): Promise<boolean>;

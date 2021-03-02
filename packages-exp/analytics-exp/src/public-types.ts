@@ -20,6 +20,7 @@ import { FirebaseApp } from '@firebase/app-exp';
 /**
  * A set of common Analytics config settings recognized by
  * gtag.
+ * @public
  */
 export interface GtagConfigParams {
   'send_page_view'?: boolean;
@@ -41,6 +42,7 @@ export interface GtagConfigParams {
 
 /**
  * Analytics initialization options.
+ * @public
  */
 export interface AnalyticsOptions {
   config: GtagConfigParams | EventParams;
@@ -49,6 +51,7 @@ export interface AnalyticsOptions {
 /**
  * Additional options that can be passed to Firebase Analytics method
  * calls such as `logEvent`, `setCurrentScreen`, etc.
+ * @public
  */
 export interface AnalyticsCallOptions {
   /**
@@ -58,6 +61,10 @@ export interface AnalyticsCallOptions {
   global: boolean;
 }
 
+/**
+ * An instance of Firebase Analytics.
+ * @public
+ */
 export interface Analytics {
   /**
    * The FirebaseApp this Functions instance is associated with.
@@ -68,6 +75,7 @@ export interface Analytics {
 /**
  * Specifies custom options for your Firebase Analytics instance.
  * You must set these before initializing `firebase.analytics()`.
+ * @public
  */
 export interface SettingsOptions {
   /** Sets custom name for `gtag` function. */
@@ -78,6 +86,7 @@ export interface SettingsOptions {
 
 /**
  * Any custom params the user may pass to gtag.js.
+ * @public
  */
 export interface CustomParams {
   [key: string]: unknown;
@@ -85,6 +94,7 @@ export interface CustomParams {
 /**
  * Type for standard gtag.js event names. `logEvent` also accepts any
  * custom string and interprets it as a custom event name.
+ * @public
  */
 export type EventNameString =
   | 'add_payment_info'
@@ -115,9 +125,15 @@ export type EventNameString =
   | 'view_promotion'
   | 'view_search_results';
 
+/**
+ * @public
+ */
 export type Currency = string | number;
 
 /* eslint-disable camelcase */
+/**
+ * @public
+ */
 export interface Item {
   item_id?: string;
   item_name?: string;
@@ -151,7 +167,10 @@ export interface Item {
   name?: string;
 }
 
-/** @deprecated Use Item instead. */
+/**
+ * @deprecated Use Item instead.
+ * @public
+ */
 export interface Promotion {
   creative_name?: string;
   creative_slot?: string;
@@ -164,6 +183,7 @@ export interface Promotion {
  * For more information, see
  * {@link https://developers.google.com/gtagjs/reference/parameter
  * | the gtag.js documentation on parameters}.
+ * @public
  */
 export interface ControlParams {
   groups?: string | string[];
@@ -177,6 +197,7 @@ export interface ControlParams {
  * For more information, see
  * {@link https://developers.google.com/gtagjs/reference/parameter
  * | the gtag.js documentation on parameters}.
+ * @public
  */
 export interface EventParams {
   checkout_option?: string;
