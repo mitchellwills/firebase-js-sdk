@@ -22,7 +22,8 @@ import { ANALYTICS_TYPE } from './constants';
 import {
   Component,
   ComponentType,
-  ComponentContainer
+  ComponentContainer,
+  InstanceFactoryOptions
 } from '@firebase/component';
 import { ERROR_FACTORY, AnalyticsError } from './errors';
 import { logEvent } from './api';
@@ -40,11 +41,14 @@ function registerAnalytics(): void {
   _registerComponent(
     new Component(
       ANALYTICS_TYPE,
-      container => {
+      (container, { options: analyticsOptions }: InstanceFactoryOptions) => {
         // getImmediate for FirebaseApp will always succeed
         const app = container.getProvider('app-exp').getImmediate();
+        const installations = container
+          .getProvider('installations-exp-internal')
+          .getImmediate();
 
-        return factory(app);
+        return factory(app, installations, analyticsOptions);
       },
       ComponentType.PUBLIC
     )
@@ -59,8 +63,6 @@ function registerAnalytics(): void {
   function internalFactory(
     container: ComponentContainer
   ): FirebaseAnalyticsInternal {
-    //TODO: initialization fetches aren't in factory anymore so it might need to be
-    // called here.
     try {
       const analytics = container.getProvider(ANALYTICS_TYPE).getImmediate();
       return {
