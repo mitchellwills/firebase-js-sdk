@@ -19,15 +19,15 @@
   "main": "lib/index.js",
   "typings": "dist/rollup.d.ts",
   "dependencies": {
-    "@microsoft/api-extractor-model": "7.12.2",
-    "@microsoft/tsdoc": "0.12.24",
-    "@rushstack/node-core-library": "3.36.0",
-    "@rushstack/ts-command-line": "4.7.8",
-    "colors": "~1.2.1",
-    "resolve": "~1.17.0"
+    "@microsoft/api-extractor-model": "7.12.4",
+    "@microsoft/tsdoc": "0.13.0",
+    "@rushstack/node-core-library": "3.36.1",
+    "@rushstack/ts-command-line": "4.7.9",
+    "colors": "~1.4.0",
+    "resolve": "~1.20.0"
   },
   "devDependencies": {
-    "@types/resolve": "1.17.1",
+    "@types/resolve": "1.20.0",
     "mocha-chai-jest-snapshot": "1.1.1"
   }
 }
